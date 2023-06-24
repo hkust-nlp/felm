@@ -1,77 +1,7 @@
 # FELM
  FELM is a benchmark for factuality evaluation of large language models. We firstly collect prompts from various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors, then we use ChatGPT to produce the responses for the prompts. Next we annotate these reponses in segment granularity with reference links, error types and error reasons provided by annotators. This benchmark can serve as meta-metric for factuality detectors of LLM.
 
-#### Dataset Link
-https://github.com/SJTU-LIT/felm
-
-#### Data Card Author(s)
-
-- Shiqi Chen, Shanghai Jiao Tong University, City University of Hong Kong: (Contributor)
-- Junxian He, Shanghai Jiao Tong University: (Manager)
-
-
-
-## Authorship
-
-### Publishers
-#### Publishing Organization(s)
-Shanghai Jiao Tong University, City University of Hong Kong
-
-#### Industry Type(s)
-- Academic - Tech
-
-
-#### Contact Detail(s)
-- **Publishing POC:** Shiqi Chen
-
-- **Affiliation:** Shanghai Jiao Tong University, City University of Hong Kong.
-
-- **Contact:** schen438-c@my.cityu.edu.hk
-
-- **Mailing List:** schen438-c@my.cityu.edu.hk
-
-- **Website:** https://github.com/SJTU-LIT/felm
-
-  
-
-### Dataset Owners
-#### Team(s)
-SJTU
-#### Contact Detail(s)
-
-- **Dataset Owner(s):** Shiqi Chen, Junxian He
-- **Affiliation:** Shanghai Jiao Tong University, City University of Hong Kong.
-- **Contact:** schen438-c@my.cityu.edu.hk
-
-#### Author(s)
-- Shiqi Chen, Shanghai Jiao Tong University/City University of Hong Kong
-
-- Yiran Zhao, National University of Singapore
-
-- Jinghan Zhang, Shanghai Jiao Tong University
-
-- I-Chun Chern, Carnegie Mellon University
-
-- Siyang Gao, City University of Hong Kong
-
-- Pengfei Liu, Shanghai Jiao Tong University
-
-- Junxian He, Shanghai Jiao Tong University
-
-  
-### Funding Sources
-#### Institution(s)
-- Shanghai Jiao Tong University
-- City University of Hong Kong
-
-
-
-## Dataset Overview
-
-#### Data Subject(s)
-
-- Synthetically generated data
-
+## Data Description
 
 #### Dataset Snapshot
 
@@ -91,14 +21,6 @@ Statistic | All | world_knowledge | Science/tech | Writting/Recommendation | Rea
 Segments | 3948 | 532  | 1025 | 599 | 683 | 1109 
 Positive segments | 3380 | 385  | 877 | 477 | 582 |1059 
 Negative segments |568 | 147  | 148 | 122 | 101 | 50  
-
-
-
-
-## Example of Data Points
-#### Primary Data Modality
-
-- Text Data
 
 #### Data Fields
 
@@ -125,105 +47,35 @@ Negative segments |568 | 147  | 148 | 122 | 101 | 50
 
 
 
-## Motivations & Intentions
-
-### Motivations
-#### Purpose(s)
-
-- Research
 
 
-#### Domain(s) of Application
+## Download
 
+- Method 1: Download the zip file then unzip it:
+  ```
+  git clone https://github.com/SJTU-LIT/felm.git
+  ```
+- Method 2: Directly load the dataset using [Hugging Face datasets](https://huggingface.co/datasets/sjtu-lit/felm):
 
-Natural language processing
+  ```python
+  from datasets import load_dataset
+  dataset=load_dataset(r"sjtu-lit/felm",'wk')
+  print(dataset['test'][0])
+  
+  ```
 
-#### Motivating Factor(s)
-
-Provide meta benchmark for factuality evaluator of large language models in diverse domains.
-
-
-
-### Intended Use
-#### Dataset Use(s)
-
-- Safe for research use
-
-
-#### Research and Problem Space(s)
-
-Evaluating the factuality evaluators of large language models in diverse domains including world knowledege, science/technology, writing/recommendation, reasoning and math.
-
-
-## Provenance
-### Collection
-#### Method(s) Used
-- API
-- Artificially Generated
-- Scraped or Crawled
-- Taken from other existing datasets
-
-#### Methodology Detail(s)
-**Collection Type**
-
-**Source:** TruthfulQA, MMLU, GSM8k, hc3, Quora, https://arxiv.org/pdf/2302.03494.pdf, https://docs.google.com/spreadsheets/d/1kDSERnROv5FgHbVN8z_bXH9gak2IXRtoqz0nwhrviCw/edit#gid=1302320625, https://github.com/giuven95/chatgpt-failures, https://twitter.com/DieterCastel/status/1598727145416790028?lang=en,https://twitter.com/zhou_yu_ai/status/1644697590586384384?s=46&t=7b5KyE0RBwd0oyYd2mHqfA  
-
-**Platform:** Quora,Twitter.
-
-**Is this source considered sensitive or high-risk?** [No]
-
-#### Source Description(s)
-
-- **Source: TruthfulQA** https://aclanthology.org/2022.acl-long.229/
-- **Source: MMLU** https://openreview.net/forum?id=d7KBjmI3GmQ
-- **Source: MATH** https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/file/be83ab3ecd0db773eb2dc1b0a17836a1-Paper-round2.pdf
-- **Source: hc3** https://ui.adsabs.harvard.edu/abs/2023arXiv230107597G/abstract
-- **Source: quora** https://www.quora.com
-- **Source: twitter** https://twitter.com/zhou_yu_ai/status/1644697590586384384?s=46&t=7b5KyE0RBwd0oyYd2mHqfA, https://twitter.com/DieterCastel/status/1598727145416790028?lang=en
-- **Source: online blog** https://docs.google.com/spreadsheets/d/1kDSERnROv5FgHbVN8z_bXH9gak2IXRtoqz0nwhrviCw/edit#gid=1302320625
-- **Source: ChatGPT** https://chat.openai.com
-- **Source: authors** designed by authors
-
-
-
-
-### Use in ML or AI Systems
-#### Dataset Use(s)
-- Testing
-- Validation
-- Development or Production Use
-
-#### Usage Guideline(s)
-
-**Usage Guidelines:** Please check https://github.com/SJTU-LIT/felm.
-
-
-
-
-## Annotations & Labeling
-
-#### Annotation Workforce Type
-- Human Annotations (Expert)
-
-
-#### Annotation Characteristic(s)
-**Annotation Type** | **Number**
---- | ---
-Total number of annotations | 3948
-Average annotations per example | 4.8
-Number of annotators per example | 2
-[Quality metric per granuality] | 90.7%
-
-**Description:** Annotators should begin by thoroughly reading the prompt and response before annotating each segment. In case of factuality errors in any segment, annotators must take note of the error type and reason. Additionally, if the response cites any external reference links, annotators should also document them as reference links.
-
-
-**Platforms, tools, or libraries:**
-
-- annotation tool developed by authors
 
 ## Licenses
 
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+
+This work is licensed under a [MIT License](https://lbesson.mit-license.org/).
+
 [![CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-The Felm dataset is licensed under a
+The FELM dataset is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+
+
+
