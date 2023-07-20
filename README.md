@@ -1,26 +1,25 @@
 # FELM
  FELM is a benchmark for factuality evaluation of large language models. We firstly collect prompts from various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors, then we use ChatGPT to produce the responses for the prompts. Next we annotate these reponses in segment granularity with reference links, error types and error reasons provided by annotators. This benchmark can serve as meta-metric for factuality detectors of LLM.
-
+![](image/felm_examples.png)
 ## Data Description
-
 #### Dataset Snapshot
 
 Category | Data
 --- | ---
-Number of Instances | 817
+Number of Instances | 847
 Number of Fields | 5
 Labeled Classes | 2
-Number of Labels | 3948
+Number of Labels | 4427
 Average Labeles Per Instance | 4.8
 
 #### Descriptive Statistics
 
 
-Statistic | All | world_knowledge | Science/tech | Writting/Recommendation | Reasoning | Math
+Statistic | All | world_knowledge | Reasoning | Math | Science/tech | Writting/Recommendation 
 --- | --- | --- | --- | --- | --- | ---
-Segments | 3948 | 532  | 1025 | 599 | 683 | 1109 
-Positive segments | 3380 | 385  | 877 | 477 | 582 |1059 
-Negative segments |568 | 147  | 148 | 122 | 101 | 50  
+Segments | 4427 | 532  | 1025 | 599 | 683 |  1588
+Positive segments | 3642 | 385  | 877 | 477 | 582 |1321 
+Negative segments |785 | 147  | 148 | 122 | 101 | 267  
 
 #### Data Fields
 
