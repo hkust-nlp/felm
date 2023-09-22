@@ -1,6 +1,6 @@
 # FELM
 ![](image/title.png)
-🎉 🎉 🎉Our paper is accepted by NeurIPS Datasets and Benchmarks track 2023 and will be on arxiv soon!! 
+**🎉 🎉 🎉Our paper is accepted by NeurIPS Datasets and Benchmarks track 2023 and will be on Arxiv soon!!** 
 
  FELM is a benchmark for factuality evaluation of large language models.
 
