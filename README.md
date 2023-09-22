@@ -1,7 +1,16 @@
 # FELM
- FELM is a benchmark for factuality evaluation of large language models. We firstly collect prompts from various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors, then we use ChatGPT to produce the responses for the prompts. Next we annotate these reponses in segment granularity with reference links, error types and error reasons provided by annotators. This benchmark can serve as meta-metric for factuality detectors of LLM.
+![](image/title.png)
+🎉 🎉 🎉Our paper is accepted by NeurIPS Datasets and Benchmarks track 2023 and will be on arxiv soon!! 
+
+ FELM is a benchmark for factuality evaluation of large language models.
+
+  We consider five distinct domains: world knowledge, science/technology, writing/recommendation, reasoning, and math in FELM. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors. We then obtain responses from ChatGPT for these prompts. 
+
+  For each response, we employ fine-grained annotation at the segment level, which includes reference links, identified error types, and the reasons behind these errors as provided by our annotators. This benchmark is designed to function as a meta-metric for evaluating the performance of factuality detectors in large language models.
+
 ![](image/felm_examples.png)
 ## Data Description
+#### Overview
 #### Dataset Snapshot
 
 Category | Data
@@ -10,7 +19,6 @@ Number of Instances | 847
 Number of Fields | 5
 Labeled Classes | 2
 Number of Labels | 4427
-Average Labeles Per Instance | 4.8
 
 #### Descriptive Statistics
 
@@ -40,12 +48,26 @@ Negative segments |785 | 147  | 148 | 122 | 101 | 267
 
 
 ```
-{"index": "0", "source": "quora", "prompt": "Which country or city has the maximum number of nuclear power plants?", "response": "The United States has the highest number of nuclear power plants in the world, with 94 operating reactors. Other countries with a significant number of nuclear power plants include France, China, Russia, and South Korea.", "segmented_response": ["The United States has the highest number of nuclear power plants in the world, with 94 operating reactors.", "Other countries with a significant number of nuclear power plants include France, China, Russia, and South Korea."], "labels": [false, true], "comment": ["As of December 2022, there were 92 operable nuclear power reactors in the United States.", ""], "type": ["knowledge_error", null], "ref": ["https://www.eia.gov/tools/faqs/faq.php?id=207&t=3"]}
+{"index": "0", 
+ "source": "quora", 
+ "prompt": "Which country or city has the maximum number of nuclear power plants?", 
+ "response": "The United States has the highest number of nuclear power plants in the world, with 94 operating reactors. Other countries with a significant number of nuclear power plants include France, China, Russia, and South Korea.",
+ "segmented_response": ["The United States has the highest number of nuclear power plants in the world, with 94 operating reactors.", "Other countries with a significant number of nuclear power plants include France, China, Russia, and South Korea."], 
+ "labels": [false, true],
+ "comment": ["As of December 2022, there were 92 operable nuclear power reactors in the United States.", ""], 
+ "type": ["knowledge_error", null], 
+ "ref": ["https://www.eia.gov/tools/faqs/faq.php?id=207&t=3"]}
 
 ```
+#### LEADBOARD (in segment level)
 
+| Model | F1 score | balanced accuracy                                |
+| ----------- | ----------- | ------------------------------------------- |
+| GPT4         | 48.3     |   67.1        |
+| Vicuna-33B   | 32.5      | 56.5   |
+| ChatGPT           | 25.5      | 55.9                   |
 
-
+We only report the highest score in this table.
 
 
 ## Download
@@ -74,6 +96,7 @@ This work is licensed under a [MIT License](https://lbesson.mit-license.org/).
 
 The FELM dataset is licensed under a
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
 
 
 
