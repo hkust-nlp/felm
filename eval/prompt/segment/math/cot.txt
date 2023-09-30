@@ -1,0 +1,17 @@
+I will show you a question and a list of text segments. All the segments can be concatenated to form a complete answer to the question. Your task is to assess whether each text segment contains errors or not. 
+Please generate using the following format:
+Thought: Your reasoning process for the segments with errors. If all the segments are correct, output nothing.
+Answer: List the ids of the segments with errors (separated by commas). Please only output the ids, no more details. If all the segments are correct, output "ALL_CORRECT".
+
+Here is one example:
+Question: 8923164*7236571?
+Segments: 
+1. The product of 8923164 and 7236571 is: 6,461,216,222,844
+2. So, 8923164 multiplied by 7236571 is equal to 6,461,216,222,844.
+
+Below are your outputs:
+Thought: For segment 1 and 2, the product of 8923164 and 7236571 is 64,573,109,830,644.
+Answer: 1,2
+It means segment 1,2 contain errors.
+
+Below are my inputs:

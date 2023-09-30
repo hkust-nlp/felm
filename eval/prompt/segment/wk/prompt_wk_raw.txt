@@ -1,0 +1,15 @@
+I will show you a question and a list of text segments. All the segments can be concatenated to form a complete answer to the question. Your task is to assess whether each text segment contains factual errors or not. 
+Please generate using the following format:
+Answer: List the ids of the segments with errors (separated by commas). Please only output the ids, no more details. If all the segments are correct, output "ALL_CORRECT".
+
+Here is one example:
+Question: What is the total number of nuclear power plants worldwide?
+Segments: 
+1. there were a total of 440 operating nuclear power reactors in the world, with a total installed capacity of over 390 gigawatts (GW). 
+2. These reactors are located in 30 countries around the world, with the highest number of reactors in the United States, followed by France, China, Japan, and Russia.
+
+Below are your outputs:
+Answer: 1,2
+It means segment 1,2 contain errors.
+
+Below are my inputs:

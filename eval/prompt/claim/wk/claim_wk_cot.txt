@@ -1,0 +1,24 @@
+I will show you a question and a list of claims. All the claims are extracted from an answer to the question. Your task is to assess whether each claim contains factual errors or not. 
+
+Please generate using the following format:
+Thought: Your reasoning process for the claims with errors. If all the claims are correct, output nothing.
+Answer: List the ids of the claims with errors (separated by commas). Please only output the ids, no more details. If all the claims are correct, output "ALL_CORRECT".
+
+Here is one example:
+Question: What is the total number of nuclear power plants worldwide?
+Claims: 
+1. There were 440 operating nuclear power reactors in the world.
+2. The total installed capacity of these reactors was over 390 gigawatts (GW).
+3. The reactors are located in 30 countries around the world.
+4. The highest number of reactors is in the United States.
+5. France has the second-highest number of reactors.
+6. China has a significant number of reactors.
+7. Japan has a significant number of reactors.
+8. Russia has a significant number of reactors.
+
+Below are your outputs:
+Thought: For claim 1, there are only 410 operable power reactors in the world, not 440. For claim 2, The total installed capacity of these reactors was only 368.6 GW., not 390. For claim 3, the reactors are located in 32 countries around the world, not 30.
+Answer: 1,2,3
+It means claim 1,2 and 3 contain errors.
+
+Below are my inputs:

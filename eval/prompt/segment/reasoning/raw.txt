@@ -1,0 +1,19 @@
+I will show you a question and a list of text segments. All the segments can be concatenated to form a complete answer to the question. Your task is to determine whether each text segment contains factual errors or not. 
+Please generate using the following format:
+Answer: List the ids of the segments with errors (separated by commas). Please only output the ids, no more details. If all the segments are correct, output "ALL_CORRECT".
+
+Here is one example:
+Question: A company offers a 10% discount on all purchases over $100. A customer purchases three items, each costing $80. Does the customer qualify for the discount?
+Segments: 
+1. To solve this problem, we need to use deductive reasoning. We know that the company offers a 10% discount on purchases over $100, so we need to calculate the total cost of the customer's purchase.
+2. The customer purchased three items, each costing $80, so the total cost of the purchase is: 3 x $80 = $200.
+3. Since the total cost of the purchase is greater than $100, the customer qualifies for the discount. 
+4. To calculate the discounted price, we can multiply the total cost by 0.1 (which represents the 10% discount): $200 x 0.1 = $20.
+5. So the customer is eligible for a discount of $20, and the final cost of the purchase would be: $200 - $20 = $180.
+6. Therefore, the customer would pay a total of $216 for the three items with the discount applied.
+
+Below are your outputs:
+Answer: 2,3,4,5,6
+It means segment 2,3,4,5,6 contains errors.
+
+Below are my inputs:

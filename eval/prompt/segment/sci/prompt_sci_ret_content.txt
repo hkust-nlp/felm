@@ -1,0 +1,19 @@
+I will show you a question, a list of text segments, and a reference doc. All the segments can be concatenated to form a complete answer to the question. Your task is to assess whether each text segment contains factual errors or not with the help of the reference doc. 
+Please generate using the following format:
+Answer: List the ids of the segments with errors (separated by commas). Please only output the ids, no more details. If all the segments are correct, output "ALL_CORRECT".
+
+Here is one example:
+Question: What is the diffusion model in computer science?
+Segments: 
+1. In computer science, the diffusion model is a mathematical model used to simulate the spread of information or data through a network or system. 
+2. It is often used to study phenomena such as the spread of viruses, the adoption of new technologies, or the dissemination of information in social networks.
+Rerefence doc: In machine learning, diffusion models, also known as diffusion probabilistic models, are a class of latent variable models. They are Markov chains trained using variational inference.[1] The goal of diffusion models is to learn the latent structure of a dataset by modeling the way in which data points diffuse through the latent space. In computer vision, this means that a neural network is trained to denoise images blurred with Gaussian noise by learning to reverse the diffusion process.[2][3] Three examples of generic diffusion modeling frameworks used in computer vision are denoising diffusion probabilistic models, noise conditioned score networks, and stochastic differential equations.[4]
+Diffusion models were introduced in 2015 with a motivation from non-equilibrium thermodynamics.[5]
+Diffusion models can be applied to a variety of tasks, including image denoising, inpainting, super-resolution, and image generation. For example, an image generation model would start with a random noise image and then, after having been trained reversing the diffusion process on natural images, the model would be able to generate new natural images. Announced on 13 April 2022, OpenAI's text-to-image model DALL-E 2 is a recent example. It uses diffusion models for both the model's prior (which produces an image embedding given a text caption) and the decoder that generates the final image.[6]
+
+
+Below are your outputs:
+Answer: 1,2
+It means segment 1,2 contain errors.
+
+Below are my inputs:
