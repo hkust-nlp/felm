@@ -59,9 +59,26 @@ Negative segments |785 | 147  | 148 | 122 | 101 | 267
  "ref": ["https://www.eia.gov/tools/faqs/faq.php?id=207&t=3"]}
 
 ```
+#### Evaluation on FELM
+environment requirement:
+```
+transformers 4.32.0
+openai 0.27.8
+tenacity 8.2.2
+tokenizer 3.4.2
+pandas 2.0.3
+```
+to reproduce our results:
+```
+cd eval
+bash eval.sh
+#replace 'Your OPENAI KEY' with your openai api key if using GPT-3.5 or GPT-4
+```
+
+
 #### LEADBOARD (in segment level)
 
-| Model | F1 score | balanced accuracy                                |
+| Model | F1 score | Balanced accuracy                                |
 | ----------- | ----------- | ------------------------------------------- |
 | GPT4         | 48.3     |   67.1        |
 | Vicuna-33B   | 32.5      | 56.5   |
