@@ -1,0 +1,21 @@
+I will show you a question and a list of text segments. The text segments can be concatenated to form a complete answer to the question. 
+Your task is to extract factual claims from each text segment. 
+
+Here is one example:
+Question: What is the diffusion model in computer science?
+Segments: 
+1. In computer science, the diffusion model is a mathematical model used to simulate the spread of information or data through a network or system. 
+2. It is often used to study phenomena such as the spread of viruses, the adoption of new technologies, or the dissemination of information in social networks.
+
+Below are your outputs:
+Answer:
+Segment 1:
+Claim 1. The diffusion model is a mathematical model.
+Claim 2. The diffusion model is used in computer science.
+Claim 3. The diffusion model is used to simulate the spread of information or data through a network or system.
+
+Segment 2:
+Claim 1. The diffusion model is often used to study the spread of viruses.
+Claim 2. The diffusion model is often used to study the adoption of new technologies.
+Claim 3. The diffusion model is often used to study the dissemination of information in social networks.
+Below are my inputs:

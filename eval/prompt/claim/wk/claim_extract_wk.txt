@@ -1,0 +1,22 @@
+I will show you a question and a list of text segments. The text segments can be concatenated to form a complete answer to the question. 
+Your task is to extract factual claims from each text segment. 
+
+Here is one example:
+Question: Tell me about the World Happiness Report.
+Segments: 
+1. The World Happiness Report is an annual report published by the United Nations Sustainable Development Solutions Network that ranks countries by their level of happiness or subjective well-being. 
+2. The report aims to provide policymakers with information and analysis to help them make informed decisions about promoting happiness and well-being in their countries. 
+
+Below are your outputs:
+Answer:
+Segment 1:
+Claim 1. The World Happiness Report is an annual report.
+Claim 2. The World Happiness Report is published by the United Nations Sustainable Development Solutions Network.
+Claim 3. The World Happiness Report ranks countries by their level of happiness or subjective well-being.
+
+Segment 2:
+Claim 1. The World Happiness Report aims to provide policymakers with information and analysis.
+Claim 2. The World Happiness Report aims to help policymakers make informed decisions.
+Claim 3. The World Happiness Report aims to help policymakers promote happiness and well-being in their countries.
+
+Below are my inputs:
