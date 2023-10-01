@@ -2,7 +2,8 @@
 ![](image/title.png)
 **🎉 🎉 🎉Our paper is accepted by NeurIPS Datasets and Benchmarks track 2023 and will be on Arxiv soon!!** 
 
- FELM is a benchmark for factuality evaluation of large language models.([Hugging Face datasets:FELM](https://huggingface.co/datasets/hkust-nlp/felm))
+ FELM is a benchmark for factuality evaluation of large language models.(FELM on Hugging Face dataset can be found [Here](https://huggingface.co/datasets/hkust-nlp/felm))
+ 
  Authors: Shiqi Chen, Yiran Zhao, Jinghan Zhan, I-Chun Chern, Siyang Gao, Pengfei Liu and Junxian He.
 
 The benchmark comprises 847 questions that span five distinct domains: world knowledge, science/technology, writing/recommendation, reasoning, and math. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors.
