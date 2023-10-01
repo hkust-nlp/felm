@@ -2,11 +2,12 @@
 ![](image/title.png)
 **🎉 🎉 🎉Our paper is accepted by NeurIPS Datasets and Benchmarks track 2023 and will be on Arxiv soon!!** 
 
- FELM is a benchmark for factuality evaluation of large language models.
+ FELM is a benchmark for factuality evaluation of large language models.([Hugging Face datasets:FELM](https://huggingface.co/datasets/hkust-nlp/felm))
+ Authors: Shiqi Chen, Yiran Zhao, Jinghan Zhan, I-Chun Chern, Siyang Gao, Pengfei Liu and Junxian He.
 
-  We consider five distinct domains: world knowledge, science/technology, writing/recommendation, reasoning, and math in FELM. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors. We then obtain responses from ChatGPT for these prompts. 
+The benchmark comprises 847 questions that span five distinct domains: world knowledge, science/technology, writing/recommendation, reasoning, and math. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors.
 
-  For each response, we employ fine-grained annotation at the segment level, which includes reference links, identified error types, and the reasons behind these errors as provided by our annotators. This benchmark is designed to function as a meta-metric for evaluating the performance of factuality detectors in large language models.
+ We then obtain responses from ChatGPT for these prompts. For each response, we employ fine-grained annotation at the segment level, which includes reference links, identified error types, and the reasons behind these errors as provided by our annotators.
 
 ![](image/felm_examples.png)
 ## Data Description
@@ -91,13 +92,13 @@ We only report the highest score in this table.
 
 - Method 1: Download the zip file then unzip it:
   ```
-  git clone https://github.com/SJTU-LIT/felm.git
+  git clone https://github.com/hkust-nlp/felm.git
   ```
-- Method 2: Directly load the dataset using [Hugging Face datasets](https://huggingface.co/datasets/sjtu-lit/felm):
+- Method 2: Directly load the dataset using [Hugging Face datasets](https://huggingface.co/datasets/hkust-nlp/felm):
 
   ```python
   from datasets import load_dataset
-  dataset=load_dataset(r"sjtu-lit/felm",'wk')
+  dataset=load_dataset(r"hkust-nlp/felm",'wk')
   print(dataset['test'][0])
   
   ```
