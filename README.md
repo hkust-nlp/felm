@@ -1,23 +1,35 @@
 # FELM
 ![](image/title.png)
 <p align="center">
-   🌐 <a href="https://hkust-nlp.github.io/felm_website/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/hkust-nlp/felm" target="_blank">Hugging Face</a> • ⏬ <a href="#Download" target="_blank">Data</a> •   📃 <a href="https://openreview.net/forum?id=jSO7Vgolc6" target="_blank">Paper</a> 
+   🌐 <a href="https://hkust-nlp.github.io/felm_website/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/hkust-nlp/felm" target="_blank">Hugging Face Dataset</a> •   📃 <a href="https://openreview.net/forum?id=jSO7Vgolc6" target="_blank">Paper</a> 
 </p>
 
 **🎉 🎉 🎉Our paper is accepted by NeurIPS Datasets and Benchmarks track 2023 and will be on Arxiv soon!!** 
 
- FELM is a meta benchmark to evaluate factuality evaluation for large language models.
- (FELM on Hugging Face dataset can be found [Here](https://huggingface.co/datasets/hkust-nlp/felm))
- 
- Authors: Shiqi Chen, Yiran Zhao, Jinghan Zhan, I-Chun Chern, Siyang Gao, Pengfei Liu and Junxian He.
-
-The benchmark comprises 847 questions that span five distinct domains: world knowledge, science/technology, writing/recommendation, reasoning, and math. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors.
+ FELM is a meta benchmark to *evaluate factuality evaluation* for large language models.
+ The benchmark comprises 847 questions that span five distinct domains: world knowledge, science/technology, writing/recommendation, reasoning, and math. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors.
 
  We then obtain responses from ChatGPT for these prompts. For each response, we employ fine-grained annotation at the segment level, which includes reference links, identified error types, and the reasons behind these errors as provided by our annotators.
 
 ![](image/felm_examples.png)
+
+## Download
+
+- Method 1: Download the zip file then unzip it:
+  ```
+  git clone https://github.com/hkust-nlp/felm.git
+  ```
+- Method 2: Directly load the dataset using [Hugging Face datasets](https://huggingface.co/datasets/hkust-nlp/felm):
+
+  ```python
+  from datasets import load_dataset
+  dataset=load_dataset(r"hkust-nlp/felm",'wk')
+  print(dataset['test'][0])
+  
+  ```
+
+
 ## Data Description
-#### Overview
 #### Dataset Snapshot
 
 Category | Data
@@ -91,23 +103,7 @@ bash eval.sh
 | Vicuna-33B   | 32.5      | 56.5   |
 | ChatGPT           | 25.5      | 55.9                   |
 
-We only report the highest score in this table.
-
-
-## Download
-
-- Method 1: Download the zip file then unzip it:
-  ```
-  git clone https://github.com/hkust-nlp/felm.git
-  ```
-- Method 2: Directly load the dataset using [Hugging Face datasets](https://huggingface.co/datasets/hkust-nlp/felm):
-
-  ```python
-  from datasets import load_dataset
-  dataset=load_dataset(r"hkust-nlp/felm",'wk')
-  print(dataset['test'][0])
-  
-  ```
+We only report the highest scores in this table.
 
 
 ## Licenses
