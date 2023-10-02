@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FELM: Benchmarking Factuality Evaluation of Large Language Models">
+  <meta name="keywords" content="LLMs, Factuality">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FELM: Benchmarking Factuality Evaluation of Large Language Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/felm_emoji.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <!--
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+      -->
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FELM: <br> Benchmarking Factuality Evaluation <br> of Large Language Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=4Tg7zOMAAAAJ&hl=zh-CN">Shiqi Chen</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=D_HwSlEAAAAJ&hl=en">Yiran Zhao</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://jinghan23.github.io/">Jinghan Zhang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ethanc111.github.io/">I-Chun Chern</a><sup>4</sup>,
+            </span>
+            <br>
+             <span class="author-block">
+              <a href="https://sites.google.com/view/gaosiyang/home">Siyang Gao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://plms.ai/">Pengfei Liu</a><sup>5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://jxhe.github.io/">Junxian He</a><sup>2</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>City University of Hong Kong</span>
+            <span class="author-block"><sup>2</sup>Hong Kong University of Science and Technology</span>
+            <span class="author-block"><sup>3</sup>National University of Singapore</span>
+            <span class="author-block"><sup>4</sup>Carnegie Mellon University</span>
+            <span class="author-block"><sup>5</sup>Shanghai Jiaotong University</span>
+          </div>
+
+          <div class="column has-text-centered">
+              <!-- Video Link. -->
+
+              <!--
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              -->
+              
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/hkust-nlp/felm"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/hkust-nlp/felm"
+                   class="external-link button is-normal is-rounded is-warning">
+                   <!-- <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span> -->
+                  <span>&#129303</span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits.
+      </h2>
+    </div>
+  </div>
+</section>
+-->
+
+<!--
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered" font-size: 18px;">
+      <div class="column is-four-fifths">
+        <h1 class="title is-3">Abstract</h1>
+        <div class="content has-text-justified">
+          <p><strong>FELM</strong> is a benchmark for factuality evaluation of large language models.</p>
+          <p>Assessing factuality of text generated by large language models (LLMs) is an emerging yet crucial research area, aimed at alerting users to potential errors and guiding the development of more reliable LLMs. Nonetheless, the <strong> evaluators assessing factuality necessitate suitable evaluation themselves to gauge progress and foster advancements. </strong> This direction remains under-explored, resulting in substantial impediments to the progress of factuality evaluators. To mitigate this issue, we introduce a benchmark for Factuality Evaluation of large Language Models, referred to as FELM. In this benchmark, we collect responses generated from LLMs and annotate factuality labels in a fine-grained manner. </p>
+          <p>FELM covers five distinct domains: World Knowledge, Science/Technology, Writing/Recommendation, Reasoning, and Math. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors. We then obtain responses from ChatGPT for these prompts.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered" font-size: 18px;">
+      <div class="column is-four-fifths">
+        <h1 class="title is-3">Examples from each domain in FELM</h1>
+        <div class="content has-text-justified">
+          <figure><img src="./static/images/felm_examples.png" alt="Figure 1"></figure>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  <div class="columns is-centered has-text-centered" font-size: 18px;">
+      <div class="column is-four-fifths">
+        <h1 class="title is-3">Dataset Statistics</h1>
+        <div class="content has-text-justified">
+<h4>Dataset Snapshot</h4>
+            <table>
+  <tr>
+    <th>Category</th>
+    <th>Data</th>
+  </tr>
+  <tr>
+    <td>Number of Instances</td>
+    <td>847</td>
+  </tr>
+  <tr>
+    <td>Number of Fields</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Labeled Classes</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>Number of Labels</td>
+    <td>4427</td>
+  </tr>
+</table>
+
+<h4>Descriptive Statistics</h4>
+
+<table>
+  <tr>
+    <th>Statistic</th>
+    <th>All</th>
+    <th>world_knowledge</th>
+    <th>Reasoning</th>
+    <th>Math</th>
+    <th>Science/tech</th>
+    <th>Writing/Recommendation</th>
+  </tr>
+  <tr>
+    <td>Segments</td>
+    <td>4427</td>
+    <td>532</td>
+    <td>1025</td>
+    <td>599</td>
+    <td>683</td>
+    <td>1588</td>
+  </tr>
+  <tr>
+    <td>Positive segments</td>
+    <td>3642</td>
+    <td>385</td>
+    <td>877</td>
+    <td>477</td>
+    <td>582</td>
+    <td>1321</td>
+  </tr>
+  <tr>
+    <td>Negative segments</td>
+    <td>785</td>
+    <td>147</td>
+    <td>148</td>
+    <td>122</td>
+    <td>101</td>
+    <td>267</td>
+  </tr>
+</table>
+        </div>
+      </div>
+  </div>
+  
+    <!-- Leaderboard. -->
+    <div class="columns is-centered has-text-centered" style="font-size: 18px;">
+      <div class="column is-four-fifths">
+          <h1 class="title is-3">Leaderboard on FELM</h1>
+          <div class="content has-text-justified">
+            <p> F1 Score stands for the capability to detect the factual errors.</p>
+            <p> Balanced Accuracy stands for the balanced performance on correct and incorrect samples.</p>
+              <table border="1" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>Model</th>
+                <th>F1 Score</th>
+                <th>Balanced Accuracy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- I've added all the rows as per your request -->
+            <tr><td>1</td><td>GPT-4</td><td>48.3</td><td>67.1</td></tr>
+            <tr><td>2</td><td>Vicuna-33B</td><td>32.5</td><td>56.5</td></tr>
+            <tr><td>3</td><td>ChatGPT</td><td>25.5</td><td>55.9</td></tr>
+        </tbody>
+    </table>
+          </div>
+      </div>
+    </div>
+    <!--/ Leaderboard. -->
+  
+    <!--/ Matting. -->
+    <!-- Concurrent Work. -->
+<!--
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{chen2023felm,
+  title = {FELM: Benchmarking Factuality Evaluation of Large Language Models},
+  author = {Chen, Shiqi and Zhao, Yiran and Zhang, Jinghan and Chern, I-Chun and Gao, Siyang and Liu, Pengfei and He, Junxian},
+  year = {2023},
+  journal = {NeurIPS}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+ <!--
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+</body>
+</html>
