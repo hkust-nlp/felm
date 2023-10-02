@@ -15,11 +15,11 @@
 
 ## Download
 
-- Method 1: Download the zip file then unzip it:
+- Method 1: Download the whole dataset by:
   ```
-  git clone https://github.com/hkust-nlp/felm.git
+  wget https://huggingface.co/datasets/hkust-nlp/felm/blob/main/all.jsonl
   ```
-- Method 2: Directly load the dataset using [Hugging Face datasets](https://huggingface.co/datasets/hkust-nlp/felm):
+- Method 2: Load the dataset using [Hugging Face datasets](https://huggingface.co/datasets/hkust-nlp/felm):
 
   ```python
   from datasets import load_dataset
@@ -79,7 +79,7 @@ Negative segments |785 | 147  | 148 | 122 | 101 | 267
 
 ```
 #### Evaluation on FELM
-environment requirement:
+Environment requirements:
 ```
 transformers 4.32.0
 openai 0.27.8
@@ -87,10 +87,13 @@ tenacity 8.2.2
 tokenizer 3.4.2
 pandas 2.0.3
 ```
-to reproduce our results:
+To reproduce our results:
 ```
 cd eval
+#put "all.jsonl" here (Downloaded by Method 1)
 bash eval.sh
+#You can choose "vicuna_30B", "gpt-3.5-turbo" and "gpt-4" for the parameter "model".
+#You can choose "raw", "cot", "link", "content" and "cot-cons"(cot-cons means cot self-consistency method) for the parameter "method".
 #replace 'Your OPENAI KEY' with your openai api key if using GPT-3.5 or GPT-4
 ```
 
