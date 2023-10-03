@@ -124,7 +124,7 @@ Please cite our paper if you use our dataset:
 ```bibtex
 @inproceedings{
 chen2023felm,
-title={FELM: Benchmarking Factuality Evaluation of Large Language Models },
+title={FELM: Benchmarking Factuality Evaluation of Large Language Models},
 author={Chen, Shiqi and Zhao, Yiran and Zhang, Jinghan and Chern, I-Chun and Gao, Siyang and Liu, Pengfei and He, Junxian},
 booktitle={Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
 year={2023},
