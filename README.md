@@ -1,10 +1,8 @@
 # FELM
 ![](image/title.png)
 <p align="center">
-   🌐 <a href="https://hkust-nlp.github.io/felm_website/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/hkust-nlp/felm" target="_blank">Hugging Face Dataset</a> •   📃 <a href="https://openreview.net/forum?id=jSO7Vgolc6" target="_blank">Paper</a> 
+   🌐 <a href="https://hkust-nlp.github.io/felm/" target="_blank">Website</a> • 🤗 <a href="https://huggingface.co/datasets/hkust-nlp/felm" target="_blank">Hugging Face Dataset</a> •   📃 <a href="http://arxiv.org/abs/2310.00741" target="_blank">Paper</a> 
 </p>
-
-**🎉 🎉 🎉Our paper is accepted by NeurIPS Datasets and Benchmarks track 2023 and will be on Arxiv soon!!** 
 
  FELM is a meta benchmark to *evaluate factuality evaluation* for large language models.
  The benchmark comprises 847 questions that span five distinct domains: world knowledge, science/technology, writing/recommendation, reasoning, and math. We gather prompts corresponding to each domain by various sources including standard datasets like truthfulQA, online platforms like Github repositories, ChatGPT generation or drafted by authors.
@@ -126,11 +124,11 @@ Please cite our paper if you use our dataset:
 ```bibtex
 @inproceedings{
 chen2023felm,
-title={{FELM}: Benchmarking Factuality Evaluation of Large Language Models },
+title={FELM: Benchmarking Factuality Evaluation of Large Language Models},
 author={Chen, Shiqi and Zhao, Yiran and Zhang, Jinghan and Chern, I-Chun and Gao, Siyang and Liu, Pengfei and He, Junxian},
 booktitle={Thirty-seventh Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
 year={2023},
-url={https://openreview.net/forum?id=jSO7Vgolc6}
+url={http://arxiv.org/abs/2310.00741}
 }
 
 ```
