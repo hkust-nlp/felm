@@ -1,3 +1,4 @@
+      
 import openai
 import argparse
 import pandas as pd
@@ -18,20 +19,20 @@ import json
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 @retry(wait=wait_random_exponential(min=8, max=50), stop=stop_after_attempt(6))
-def gene(a,dataname,model,method):
+def gene(eval_prompt,dataname,model,method):
     
     if model=='vicuna_30B':
        
 
-        a+="\nBelow are your outputs:"
-        a+="\nAnswers:"
-        input_ids = tokenizer(a, return_tensors="pt").input_ids.to("cuda")
+        eval_prompt+="\nBelow are your outputs:"
+        eval_prompt+="\nAnswers:"
+        input_ids = tokenizer(eval_prompt, return_tensors="pt").input_ids.to("cuda")
         outputs = model_.generate(input_ids,max_new_tokens=100)
         
         return (tokenizer.decode(outputs[0])[len(a)+4:],a)
     elif model=="gpt-3.5-turbo" or model=="gpt-4":
         prefix=[{"role":"system","content":"You are a helpful assistant."}]
-        prefix+= [{"role":"user","content": a}]
+        prefix+= [{"role":"user","content": eval_prompt}]
         if method=='cot_cons':
             request=openai.ChatCompletion.create(
             model=model,
@@ -109,61 +110,69 @@ def run(ori_data,model,method,num_cons):
         dataset=data['domain']
         if dataset=='math':
             if method=='raw':
-                a=open("./prompt/segment/math/raw.txt").read() + "\n"
-            if method=='cot' or method=='cot_cons':
-                a=open("./prompt/segment/math/cot.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/math/raw.txt").read() + "\n"
+            if method=='cot':
+                eval_prompt=open("./prompt/segment/math/cot.txt").read() + "\n"
+            if method=='link':
+                eval_prompt=open("./prompt/segment/math/raw.txt").read() + "\n"
+            if method=='content':
+                eval_prompt=open("./prompt/segment/math/raw.txt").read() + "\n"
             
         if dataset=='reasoning':
             if method=='raw':
-                a=open("./prompt/segment/reasoning/raw.txt").read() + "\n"
-            if method=='cot' or method=='cot_cons':
-                a=open("./prompt/segment/reasoning/cot.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/reasoning/raw.txt").read() + "\n"
+            if method=='cot':
+                eval_prompt=open("./prompt/segment/reasoning/cot.txt").read() + "\n"
+            if method=='link':
+                eval_prompt=open("./prompt/segment/reasoning/raw.txt").read() + "\n"
+            if method=='content':
+                eval_prompt=open("./prompt/segment/reasoning/raw.txt").read() + "\n"
             
         if dataset=='science':
             if method=='raw':
-                a=open("./prompt/segment/sci/prompt_sci_raw.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/sci/prompt_sci_raw.txt").read() + "\n"
             if method=='cot' or method=='cot_cons':
-                a=open("./prompt/segment/sci/prompt_sci_cot.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/sci/prompt_sci_cot.txt").read() + "\n"
             if method=='link':
-                a=open("./prompt/segment/sci/prompt_sci_ret_link.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/sci/prompt_sci_ret_link.txt").read() + "\n"
             if method=='content':
-                a=open("./prompt/segment/sci/prompt_sci_ret_content.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/sci/prompt_sci_ret_content.txt").read() + "\n"
         if dataset=='wk' or dataset=='writing_rec':
             if method=='raw':
-                a=open("./prompt/segment/sci/prompt_sci_raw.txt").read() + "\n"
-            if method=='cot' or method=='cot_cons':
-                a=open("./prompt/segment/sci/prompt_sci_cot.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/wk/prompt_wk_raw.txt").read() + "\n"
+            if method=='cot':
+                eval_prompt=open("./prompt/segment/wk/prompt_wk_cot.txt").read() + "\n"
             if method=='link':
-                a=open("./prompt/segment/sci/prompt_sci_ret_link.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/wk/prompt_wk_ret_link.txt").read() + "\n"
             if method=='content':
-                a=open("./prompt/segment/sci/prompt_sci_ret_content.txt").read() + "\n"
+                eval_prompt=open("./prompt/segment/wk/prompt_wk_ret_content.txt").read() + "\n"
                 
         
-        a+="\nQuestion: "
-        a+=prompt
-        # a+="\n\nAnswer: "
-        a+="\nSegments: "
+        eval_prompt+="\nQuestion: "
+        eval_prompt+=prompt
+        # eval_prompt+="\n\nAnswer: "
+        eval_prompt+="\nSegments: "
         for j in range(len(sumsentence)):
             no_number = extract_letters(sumsentence[j])
             b=str(j+1)+". "+no_number+"\n"
-            a+=b
+            eval_prompt+=b
         if method=='retrieval_link':
-            a+="\nRerefence links: "
+            eval_prompt+="\nRerefence links: "
             for ref_out in data["ref"]:
                 a += ref_out + '\n'
         if method=='retrieval_content':
-            a+="\nRerefence doc: "
+            eval_prompt+="\nRerefence doc: "
             for ref_out in data["ref_contents"]:
                 a += ref_out + '\n'
         
         if method=='cot_cons':
             raw_generates=[]
             for _ in range(num_cons):
-                raw_generate,prefix=gene(a,dataset,model,method)
+                raw_generate,prefix=gene(eval_prompt,dataset,model,method)
                 raw_generates.append(raw_generate)
             
         else:
-            raw_generate,prefix=gene(a,dataset,model,method)
+            raw_generate,prefix=gene(eval_prompt,dataset,model,method)
         
         if method=='cot_cons':
             print(_id,raw_generates,label)
@@ -299,8 +308,6 @@ def save_exp(ori_data,result, output):
 
 
 def print_saveresult(data,result,method,model):
-    # data=pd.DataFrame(data)
-    # pdb.set_trace()
     print('ALL'+str(compute_accuracy('ALL', result)))
     print('wk'+str(compute_accuracy('wk', result)))
     print('sci'+str(compute_accuracy('science', result)))
@@ -335,3 +342,5 @@ if __name__ =='__main__':
     print_saveresult(data,result,args.method,args.model)
 
 
+
+    
