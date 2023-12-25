@@ -29,7 +29,7 @@ def gene(eval_prompt,dataname,model,method):
         input_ids = tokenizer(eval_prompt, return_tensors="pt").input_ids.to("cuda")
         outputs = model_.generate(input_ids,max_new_tokens=100)
         
-        return (tokenizer.decode(outputs[0])[len(a)+4:],a)
+        return (tokenizer.decode(outputs[0])[len(eval_prompt)+4:],eval_prompt)
     elif model=="gpt-3.5-turbo" or model=="gpt-4":
         prefix=[{"role":"system","content":"You are a helpful assistant."}]
         prefix+= [{"role":"user","content": eval_prompt}]
